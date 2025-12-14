@@ -40,7 +40,7 @@ export default function Home() {
               FAQs
             </a>
             <a
-              href="#for-companies"
+              href="/company/auth"
               className="text-sm font-medium text-neutral-700 transition-colors hover:text-black"
             >
               For Companies
@@ -97,7 +97,7 @@ export default function Home() {
           {/* CTAs */}
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
-              href="#get-started"
+              href="/fresher/auth"
               className="inline-flex items-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 transition-transform hover:-translate-y-0.5"
             >
               Start proving
@@ -111,7 +111,7 @@ export default function Home() {
               </svg>
             </a>
             <a
-              href="#for-companies"
+              href="/company/auth"
               className="inline-flex items-center rounded-lg border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-black shadow-sm transition-colors hover:bg-neutral-50"
             >
               For companies
@@ -160,13 +160,13 @@ export default function Home() {
               </p>
               <div className="mt-8 flex gap-3">
                 <a
-                  href="#get-started"
+                  href="/fresher/auth"
                   className="inline-flex items-center rounded-lg bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 transition-transform hover:-translate-y-0.5 hover:bg-neutral-900"
                 >
                   Start proving now
                 </a>
                 <a
-                  href="#for-companies"
+                  href="/company/auth"
                   className="inline-flex items-center rounded-lg border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-neutral-50"
                 >
                   Why companies choose DoProof
@@ -551,7 +551,7 @@ export default function Home() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href="#get-started"
+                  href="/fresher/auth"
                   className="inline-flex items-center rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 transition-transform hover:-translate-y-0.5"
                 >
                   Start proving
@@ -565,7 +565,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="#for-companies"
+                  href="/company/auth"
                   className="inline-flex items-center rounded-lg border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-black shadow-sm transition-colors hover:bg-neutral-50"
                 >
                   For companies
@@ -589,8 +589,24 @@ export default function Home() {
           <div className="mt-10 flex items-center justify-between text-xs text-neutral-600">
             <span>© {new Date().getFullYear()} DoProof</span>
             <div className="flex items-center gap-3">
-              <a href="#" className="transition-colors hover:text-black">Terms</a>
-              <a href="#" className="transition-colors hover:text-black">Privacy</a>
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                aria-label="Terms (demo link)"
+                role="button"
+                className="transition-colors hover:text-black"
+              >
+                Terms
+              </a>
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                aria-label="Privacy (demo link)"
+                role="button"
+                className="transition-colors hover:text-black"
+              >
+                Privacy
+              </a>
             </div>
           </div>
         </div>
