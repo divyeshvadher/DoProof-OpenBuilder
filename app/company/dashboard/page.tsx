@@ -112,10 +112,10 @@ export default function CompanyDashboardPage() {
 
                 <nav className="mt-6 space-y-1">
                   {[
-                    { label: "Dashboard", href: "#dashboard" },
-                    { label: "Post Challenge", href: "#post" },
-                    { label: "Browse Talent", href: "#talent" },
-                    { label: "Settings", href: "#settings" },
+                    { label: "Dashboard", href: "/company/dashboard" },
+                    { label: "Post Challenge", href: "/company/challenges/post" },
+                    { label: "Browse Talent", href: "/company/candidates" },
+                    { label: "Settings", href: "/company/dashboard#settings" },
                   ].map((item) => (
                     <a
                       key={item.label}
@@ -228,13 +228,12 @@ export default function CompanyDashboardPage() {
               <section className="mt-10">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-bold text-black">Your Challenges</h2>
-                  <button
-                    type="button"
+                  <a
+                    href="/company/challenges/post"
                     className="text-xs font-semibold text-neutral-700 transition hover:text-black"
-                    onClick={() => alert("Post challenge (demo)")}
                   >
                     Post challenge
-                  </button>
+                  </a>
                 </div>
 
                 {challenges.length === 0 ? (
@@ -243,13 +242,12 @@ export default function CompanyDashboardPage() {
                     <p className="mt-2 text-sm text-neutral-700">
                       Post your first founder-style challenge to start reviewing proofs from freshers.
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => alert("Post challenge (demo)")}
+                    <a
+                      href="/company/challenges/post"
                       className="mt-3 inline-flex items-center rounded-md bg-black px-4 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-neutral-900"
                     >
                       Post first challenge
-                    </button>
+                    </a>
                   </div>
                 ) : (
                   <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -287,17 +285,54 @@ export default function CompanyDashboardPage() {
                 )}
               </section>
 
-              {/* Placeholder sections */}
-              <section id="post" className="mt-10">
-                <h2 className="text-lg font-bold text-black">Post Challenge</h2>
-                <p className="mt-2 text-sm text-neutral-700">Create a new challenge later — demo view only.</p>
-              </section>
-
               <section id="talent" className="mt-10">
-                <h2 className="text-lg font-bold text-black">Browse Talent</h2>
-                <p className="mt-2 text-sm text-neutral-700">
-                  Explore fresher proofs and portfolios — connect backend later.
-                </p>
+                <div className="flex items-center justify-between">
+                  <h2 className="text-lg font-bold text-black">Browse Talent</h2>
+                  <a
+                    href="/company/candidates"
+                    className="text-xs font-semibold text-neutral-700 transition hover:text-black"
+                  >
+                    Browse all talent
+                  </a>
+                </div>
+
+                <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {[
+                    { name: "Aarav S.", role: "Frontend Engineer", skills: "React, TypeScript, Tailwind", aiScore: 88, status: "Verified", updated: "2025-03-08" },
+                    { name: "Isha K.", role: "Product Analyst", skills: "Figma, Strategy, SQL", aiScore: 91, status: "Shortlisted", updated: "2025-03-05" },
+                    { name: "Rohan M.", role: "Data Analyst", skills: "SQL, BI, Viz", aiScore: 82, status: "Under Review", updated: "2025-03-06" },
+                    { name: "Devika R.", role: "Backend Engineer", skills: "Node.js, REST, Testing", aiScore: 89, status: "Verified", updated: "2025-03-07" },
+                  ].map((c) => (
+                    <div key={c.name} className="rounded-xl border border-black/10 bg-white p-5 shadow-sm">
+                      <div className="flex items-center justify-between">
+                        <div className="text-sm font-semibold text-black">{c.name}</div>
+                        <span className="inline-flex items-center rounded-full border border-black/10 bg-white px-2 py-1 text-[11px] font-semibold text-neutral-700">
+                          {c.status}
+                        </span>
+                      </div>
+                      <div className="mt-1 text-xs text-neutral-600">{c.role}</div>
+                      <p className="mt-2 text-sm text-neutral-700">{c.skills}</p>
+                      <div className="mt-2 text-xs text-neutral-600">AI score: {c.aiScore}</div>
+                      <div className="mt-3 flex items-center gap-2">
+                        <button
+                          type="button"
+                          className="inline-flex items-center rounded-md bg-black px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-neutral-900"
+                          onClick={() => alert("View profile (demo)")}
+                        >
+                          View Profile
+                        </button>
+                        <button
+                          type="button"
+                          className="inline-flex items-center rounded-md border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold text-black shadow-sm transition-colors hover:bg-neutral-50"
+                          onClick={() => alert("Shortlist (demo)")}
+                        >
+                          Shortlist
+                        </button>
+                      </div>
+                      <div className="mt-2 text-[11px] text-neutral-500">Updated {c.updated}</div>
+                    </div>
+                  ))}
+                </div>
               </section>
 
               <section id="settings" className="mt-10">
