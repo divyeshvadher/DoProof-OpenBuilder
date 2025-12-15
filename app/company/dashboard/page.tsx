@@ -188,13 +188,12 @@ export default function CompanyDashboardPage() {
               <section className="mt-10">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-bold text-black">Recent Proofs</h2>
-                  <button
-                    type="button"
+                  <a
+                    href="/company/challenges"
                     className="text-xs font-semibold text-neutral-700 transition hover:text-black"
-                    onClick={() => alert("View all proofs (demo)")}
                   >
                     View all
-                  </button>
+                  </a>
                 </div>
 
                 <div className="mt-4 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
