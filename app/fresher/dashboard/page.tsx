@@ -98,7 +98,6 @@ export default function FresherDashboardPage() {
                   { label: "Browse Challenges", href: "#browse" },
                   { label: "Upload Proof", href: "#upload" },
                   { label: "Portfolio", href: "#portfolio" },
-                  { label: "Settings", href: "#settings" },
                 ].map((item) => (
                   <a
                     key={item.label}
@@ -274,18 +273,11 @@ export default function FresherDashboardPage() {
               )}
             </section>
 
-            {/* Portfolio & Settings placeholders */}
+            {/* Portfolio placeholder */}
             <section id="portfolio" className="mt-10">
               <h2 className="text-lg font-bold text-black">Portfolio</h2>
               <p className="mt-2 text-sm text-neutral-700">
                 Your proof-based portfolio will appear here. Shareable, clean, and trust-first.
-              </p>
-            </section>
-
-            <section id="settings" className="mt-10">
-              <h2 className="text-lg font-bold text-black">Settings</h2>
-              <p className="mt-2 text-sm text-neutral-700">
-                Configure preferences later — this is a demo with sample data.
               </p>
             </section>
 

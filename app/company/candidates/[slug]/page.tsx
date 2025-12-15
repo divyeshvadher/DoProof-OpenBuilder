@@ -150,7 +150,6 @@ export default function CompanyCandidateProfilePage() {
                     { label: "Dashboard", href: "/company/dashboard" },
                     { label: "Post Challenge", href: "/company/challenges/post" },
                     { label: "Browse Talent", href: "/company/candidates" },
-                    { label: "Settings", href: "/company/dashboard#settings" },
                   ].map((item) => (
                     <a
                       key={item.label}
@@ -242,4 +241,3 @@ export default function CompanyCandidateProfilePage() {
     </div>
   );
 }
-

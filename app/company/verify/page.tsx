@@ -83,6 +83,38 @@ export default function CompanyVerifyPage() {
           </div>
         </div>
       </section>
+      <footer className="border-t border-black/10 bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div>
+              <div className="inline-flex items-center gap-2">
+                <span className="inline-block h-6 w-6 rounded-md bg-gradient-to-br from-violet-600 to-fuchsia-500 shadow-sm ring-1 ring-black/5" />
+                <span className="text-sm font-bold text-black">DoProof</span>
+              </div>
+              <p className="mt-2 text-xs text-neutral-700">Proof-first hiring for faster, trusted shortlists.</p>
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-neutral-700">Quick links</div>
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+                <a href="/company/dashboard" className="text-neutral-700 hover:text-black">Dashboard</a>
+                <a href="/company/challenges" className="text-neutral-700 hover:text-black">Challenges</a>
+                <a href="/company/challenges/post" className="text-neutral-700 hover:text-black">Post challenge</a>
+                <a href="/company/candidates" className="text-neutral-700 hover:text-black">Browse talent</a>
+              </div>
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-neutral-700">Support</div>
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+                <a href="#" className="text-neutral-700 hover:text-black">Help</a>
+                <a href="#" className="text-neutral-700 hover:text-black">Privacy</a>
+                <a href="#" className="text-neutral-700 hover:text-black">Terms</a>
+                <a href="mailto:support@doproof.example" className="text-neutral-700 hover:text-black">Contact</a>
+              </div>
+            </div>
+          </div>
+          <div className="mt-6 text-[11px] text-neutral-500">© 2025 DoProof. All rights reserved.</div>
+        </div>
+      </footer>
     </div>
   );
 }

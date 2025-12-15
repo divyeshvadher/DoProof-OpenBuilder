@@ -115,7 +115,6 @@ export default function CompanyDashboardPage() {
                     { label: "Dashboard", href: "/company/dashboard" },
                     { label: "Post Challenge", href: "/company/challenges/post" },
                     { label: "Browse Talent", href: "/company/candidates" },
-                    { label: "Settings", href: "/company/dashboard#settings" },
                   ].map((item) => (
                     <a
                       key={item.label}
@@ -332,11 +331,6 @@ export default function CompanyDashboardPage() {
                     </div>
                   ))}
                 </div>
-              </section>
-
-              <section id="settings" className="mt-10">
-                <h2 className="text-lg font-bold text-black">Settings</h2>
-                <p className="mt-2 text-sm text-neutral-700">Configure team preferences — demo only.</p>
               </section>
 
               {/* Footer note */}
