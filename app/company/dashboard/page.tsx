@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Metric = { label: string; value: number };
 type ProofRow = {
@@ -18,6 +19,7 @@ type Challenge = {
 
 export default function CompanyDashboardPage() {
   const [companyName, setCompanyName] = useState<string>("Your company");
+  const router = useRouter();
 
   useEffect(() => {
     try {
@@ -61,8 +63,7 @@ export default function CompanyDashboardPage() {
     } catch {
       // ignore
     }
-    // Demo: soft sign-out feedback
-    alert("Signed out (demo).");
+    router.push("/company/auth");
   }
 
   return (
@@ -70,14 +71,20 @@ export default function CompanyDashboardPage() {
       {/* Header */}
       <header className="border-b border-black/5 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="group inline-flex items-center gap-2" aria-label="DoProof company dashboard">
+          <a href="/company/dashboard" className="group inline-flex items-center gap-2" aria-label="Back to dashboard">
             <span className="inline-block h-8 w-8 rounded-md bg-gradient-to-br from-violet-600 to-fuchsia-500 shadow-sm ring-1 ring-black/5" />
             <span className="font-bold tracking-tight">
               <span className="bg-gradient-to-br from-black to-neutral-700 bg-clip-text text-transparent">DoProof</span>
               <span className="ml-2 align-middle text-xs font-semibold text-neutral-600">Admin</span>
             </span>
-          </div>
-          <div className="flex items-center gap-2">
+          </a>
+          <nav className="hidden items-center gap-4 md:flex">
+            <a href="/company/dashboard" className="text-xs font-semibold text-neutral-700 hover:text-black">Dashboard</a>
+            <a href="/company/challenges" className="text-xs font-semibold text-neutral-700 hover:text-black">Challenges</a>
+            <a href="/company/challenges/post" className="text-xs font-semibold text-neutral-700 hover:text-black">Post Challenge</a>
+            <a href="/company/candidates" className="text-xs font-semibold text-neutral-700 hover:text-black">Browse Talent</a>
+          </nav>
+          <div className="flex items-center justify-end gap-2">
             <span className="hidden text-xs text-neutral-600 md:inline">Signed in as {companyName}</span>
             <button
               type="button"
@@ -98,70 +105,8 @@ export default function CompanyDashboardPage() {
 
         {/* App shell */}
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-[220px_1fr] md:gap-8">
-            {/* Sidebar */}
-            <aside className="sticky top-0 z-10 hidden h-[calc(100vh-2rem)] md:block">
-              <div className="mt-6 rounded-2xl border border-black/10 bg-white p-4 shadow-sm">
-                <div className="flex items-center gap-2">
-                  <span className="inline-block h-8 w-8 rounded-md bg-gradient-to-br from-violet-600 to-fuchsia-500 shadow-sm ring-1 ring-black/5" />
-                  <div className="min-w-0">
-                    <div className="truncate text-sm font-bold text-black">DoProof</div>
-                    <div className="truncate text-xs text-neutral-600">{companyName}</div>
-                  </div>
-                </div>
-
-                <nav className="mt-6 space-y-1">
-                  {[
-                    { label: "Dashboard", href: "/company/dashboard" },
-                    { label: "Post Challenge", href: "/company/challenges/post" },
-                    { label: "Browse Talent", href: "/company/candidates" },
-                  ].map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="flex items-center justify-between rounded-md border border-black/10 bg-white px-3 py-2 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-50"
-                    >
-                      <span>{item.label}</span>
-                      <svg className="h-3.5 w-3.5 text-neutral-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l3.707 3.707a1 1 0 010 1.414l-3.707 3.707a1 1 0 01-1.414 0z" />
-                      </svg>
-                    </a>
-                  ))}
-                </nav>
-
-                <div className="mt-6">
-                  <button
-                    type="button"
-                    onClick={signOut}
-                    className="w-full rounded-md border border-black/10 bg-white px-3 py-2 text-xs font-semibold text-black shadow-sm transition-colors hover:bg-neutral-50"
-                  >
-                    Logout
-                  </button>
-                </div>
-              </div>
-            </aside>
-
             {/* Main */}
             <main className="py-6">
-              {/* Header for mobile */}
-              <div className="md:hidden">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-block h-8 w-8 rounded-md bg-gradient-to-br from-violet-600 to-fuchsia-500 shadow-sm ring-1 ring-black/5" />
-                    <div>
-                      <div className="text-sm font-bold text-black">DoProof</div>
-                      <div className="text-xs text-neutral-600">{companyName}</div>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={signOut}
-                    className="rounded-md border border-black/10 bg-white px-3 py-2 text-xs font-semibold text-black shadow-sm transition-colors hover:bg-neutral-50"
-                  >
-                    Logout
-                  </button>
-                </div>
-              </div>
 
               {/* Overview */}
               <section id="dashboard" className="mt-6">
@@ -339,7 +284,6 @@ export default function CompanyDashboardPage() {
               </p>
             </main>
           </div>
-        </div>
       </section>
     </div>
   );

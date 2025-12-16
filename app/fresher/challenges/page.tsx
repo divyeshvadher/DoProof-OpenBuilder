@@ -176,12 +176,12 @@ export default function FresherBrowseChallengesPage() {
               <span className="ml-2 align-middle text-xs font-semibold text-neutral-600">Browse Challenges</span>
             </span>
           </a>
-          <a
-            href="/fresher/dashboard"
-            className="inline-flex items-center rounded-md border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-black shadow-sm transition-colors hover:bg-neutral-50"
-          >
-            Dashboard
-          </a>
+          <nav className="hidden items-center gap-4 md:flex">
+            <a href="/fresher/dashboard" className="text-xs font-semibold text-neutral-700 hover:text-black">Dashboard</a>
+            <a href="/fresher/challenges" className="text-xs font-semibold text-neutral-700 hover:text-black">Browse Challenges</a>
+            <a href="/fresher/dashboard#upload" className="text-xs font-semibold text-neutral-700 hover:text-black">Upload Proof</a>
+            <a href="/fresher/dashboard#portfolio" className="text-xs font-semibold text-neutral-700 hover:text-black">Portfolio</a>
+          </nav>
         </div>
       </header>
 
