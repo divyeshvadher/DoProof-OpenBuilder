@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 type Difficulty = "Beginner" | "Intermediate" | "Advanced";
@@ -123,6 +123,23 @@ const DUMMY_CHALLENGES: ChallengeItem[] = [
 
 export default function FresherBrowseChallengesPage() {
   const router = useRouter();
+  const [profileSlug, setProfileSlug] = useState<string>("portfolio");
+
+  function slugify(name: string) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+
+  useEffect(() => {
+    try {
+      const savedProfile = window.localStorage.getItem("doproof.fresher.profile");
+      const savedAuth = window.localStorage.getItem("doproof.fresher.auth");
+      const name =
+        savedProfile ? (JSON.parse(savedProfile) as { name?: string }).name : (JSON.parse(savedAuth || "{}") as { name?: string }).name;
+      if (name) setProfileSlug(slugify(name));
+    } catch {
+      // ignore
+    }
+  }, []);
 
   const [filters, setFilters] = useState<{
     skill: string;
@@ -180,7 +197,7 @@ export default function FresherBrowseChallengesPage() {
             <a href="/fresher/dashboard" className="text-xs font-semibold text-neutral-700 hover:text-black">Dashboard</a>
             <a href="/fresher/challenges" className="text-xs font-semibold text-neutral-700 hover:text-black">Browse Challenges</a>
             <a href="/fresher/dashboard#upload" className="text-xs font-semibold text-neutral-700 hover:text-black">Upload Proof</a>
-            <a href="/fresher/dashboard#portfolio" className="text-xs font-semibold text-neutral-700 hover:text-black">Portfolio</a>
+            <a href={`/fresher/portfolio/${profileSlug}`} className="text-xs font-semibold text-neutral-700 hover:text-black">Portfolio</a>
           </nav>
         </div>
       </header>

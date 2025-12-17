@@ -167,6 +167,14 @@ export default function CompanyCandidateProfilePage() {
                     <div className="mt-3 inline-flex items-center rounded-md bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">
                       AI score: {candidate.aiScore} · Status: {candidate.status}
                     </div>
+                    <div className="mt-4">
+                      <a
+                        href={`/fresher/portfolio/${candidate.slug}`}
+                        className="inline-flex items-center rounded-md border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold text-black shadow-sm transition-colors hover:bg-neutral-50"
+                      >
+                        View public portfolio
+                      </a>
+                    </div>
                   </div>
 
                   <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">

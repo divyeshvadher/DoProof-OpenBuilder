@@ -17,6 +17,10 @@ type Proof = {
   aiScore: number;
 };
 
+function slugify(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
 export default function FresherDashboardPage() {
   const router = useRouter();
   const [profileName, setProfileName] = useState<string>("Your Name");
@@ -92,7 +96,7 @@ export default function FresherDashboardPage() {
             <a href="/fresher/dashboard" className="text-xs font-semibold text-neutral-700 hover:text-black">Dashboard</a>
             <a href="/fresher/challenges" className="text-xs font-semibold text-neutral-700 hover:text-black">Browse Challenges</a>
             <a href="/fresher/dashboard#upload" className="text-xs font-semibold text-neutral-700 hover:text-black">Upload Proof</a>
-            <a href="/fresher/dashboard#portfolio" className="text-xs font-semibold text-neutral-700 hover:text-black">Portfolio</a>
+            <a href={`/fresher/portfolio/${slugify(profileName)}`} className="text-xs font-semibold text-neutral-700 hover:text-black">Portfolio</a>
           </nav>
           <button
             type="button"
