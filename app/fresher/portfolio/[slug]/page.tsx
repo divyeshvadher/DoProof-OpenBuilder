@@ -102,6 +102,19 @@ function signOut() {
     return parts.join(", ");
   }, [roleSegments]);
 
+  useEffect(() => {
+    function onStorage(e: StorageEvent) {
+      if (e.key === "doproof.fresher.proofs") {
+        try {
+          const list = e.newValue ? (JSON.parse(e.newValue) as Proof[]) : [];
+          setProofs(list);
+        } catch {}
+      }
+    }
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <header className="border-b border-black/5 bg-white">

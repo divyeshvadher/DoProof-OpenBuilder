@@ -95,7 +95,7 @@ export default function FresherDashboardPage() {
           <nav className="hidden items-center gap-4 md:flex">
             <a href="/fresher/dashboard" className="text-xs font-semibold text-neutral-700 hover:text-black">Dashboard</a>
             <a href="/fresher/challenges" className="text-xs font-semibold text-neutral-700 hover:text-black">Browse Challenges</a>
-            <a href="/fresher/dashboard#upload" className="text-xs font-semibold text-neutral-700 hover:text-black">Upload Proof</a>
+            <a href="/fresher/upload" className="text-xs font-semibold text-neutral-700 hover:text-black">Upload Proof</a>
             <a href={`/fresher/portfolio/${slugify(profileName)}`} className="text-xs font-semibold text-neutral-700 hover:text-black">Portfolio</a>
           </nav>
           <button
@@ -201,9 +201,9 @@ export default function FresherDashboardPage() {
             <section id="upload" className="mt-10">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold text-black">Your proofs</h2>
-                <button className="text-xs font-semibold text-neutral-700 transition hover:text-black">
+                <a href="/fresher/upload" className="text-xs font-semibold text-neutral-700 transition hover:text-black">
                   Upload proof
-                </button>
+                </a>
               </div>
 
               {proofs.length === 0 ? (
@@ -212,9 +212,9 @@ export default function FresherDashboardPage() {
                   <p className="mt-2 text-sm text-neutral-700">
                     Upload your work artifacts and share your outcomes to build trust.
                   </p>
-                  <button className="mt-3 inline-flex items-center rounded-md bg-black px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-neutral-900">
+                  <a href="/fresher/upload" className="mt-3 inline-flex items-center rounded-md bg-black px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-neutral-900">
                     Upload now
-                  </button>
+                  </a>
                 </div>
               ) : (
                 <div className="mt-4 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
