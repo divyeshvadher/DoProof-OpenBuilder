@@ -9,6 +9,11 @@ type Proof = {
   status: "Under Review" | "Verified" | "Needs Changes";
   submittedOn: string;
   aiScore: number;
+  repoUrl?: string;
+  summary?: string;
+  links?: string[];
+  attachments?: string[];
+  declared?: boolean;
 };
 
 function slugify(name: string) {
@@ -82,7 +87,7 @@ export default function FresherPortfolioPage() {
     });
   }, [summary.byRole]);
 
-function signOut() {
+  function signOut() {
     try {
       window.localStorage.removeItem("doproof.fresher.auth");
       window.localStorage.removeItem("doproof.fresher.profile");
@@ -108,7 +113,7 @@ function signOut() {
         try {
           const list = e.newValue ? (JSON.parse(e.newValue) as Proof[]) : [];
           setProofs(list);
-        } catch {}
+        } catch { }
       }
     }
     window.addEventListener("storage", onStorage);
@@ -250,15 +255,55 @@ function signOut() {
                     <div className="col-span-2">Submitted</div>
                   </div>
                   {proofs.map((p, idx) => (
-                    <div key={`${p.title}-${idx}`} className="grid grid-cols-12 px-4 py-3 text-sm text-neutral-800">
-                      <div className="col-span-5 font-semibold text-black">{p.title}</div>
-                      <div className="col-span-2">{p.role}</div>
-                      <div className="col-span-2">{p.status}</div>
-                      <div className="col-span-1">{p.aiScore}</div>
-                      <div className="col-span-2">{p.submittedOn}</div>
+                    <div key={`${p.title}-${idx}`} className="px-4 py-3">
+                      <div className="grid grid-cols-12 text-sm text-neutral-800">
+                        <div className="col-span-5 font-semibold text-black">{p.title}</div>
+                        <div className="col-span-2">{p.role}</div>
+                        <div className="col-span-2">{p.status}</div>
+                        <div className="col-span-1">{p.aiScore}</div>
+                        <div className="col-span-2">{p.submittedOn}</div>
+                      </div>
+                      <div className="mt-2 text-[12px] text-neutral-700">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="inline-flex items-center rounded-md border border-black/10 bg-white px-2 py-1 text-[11px] font-semibold text-neutral-700">Repo</span>
+                          {p.repoUrl ? (
+                            <a href={p.repoUrl} className="text-neutral-800 underline underline-offset-2 hover:text-black" target="_blank" rel="noreferrer">{p.repoUrl}</a>
+                          ) : (
+                            <span className="text-neutral-600">No repo link</span>
+                          )}
+                        </div>
+                        {p.summary && (
+                          <div className="mt-2 flex flex-wrap items-start gap-2">
+                            <span className="inline-flex items-center rounded-md border border-black/10 bg-white px-2 py-1 text-[11px] font-semibold text-neutral-700">Summary</span>
+                            <span className="text-[12px] text-neutral-700">{p.summary}</span>
+                          </div>
+                        )}
+                        {p.links && p.links.length > 0 && (
+                          <div className="mt-2 flex flex-wrap items-center gap-2">
+                            <span className="inline-flex items-center rounded-md border border-black/10 bg-white px-2 py-1 text-[11px] font-semibold text-neutral-700">Links</span>
+                            {p.links.map((l, i) => (
+                              <a key={`${l}-${i}`} href={l} className="text-neutral-800 underline underline-offset-2 hover:text-black" target="_blank" rel="noreferrer">{l}</a>
+                            ))}
+                          </div>
+                        )}
+                        {p.attachments && p.attachments.length > 0 && (
+                          <div className="mt-2 flex flex-wrap items-center gap-2">
+                            <span className="inline-flex items-center rounded-md border border-black/10 bg-white px-2 py-1 text-[11px] font-semibold text-neutral-700">Files</span>
+                            {p.attachments.map((a, i) => (
+                              <span key={`${a}-${i}`} className="inline-flex items-center rounded-md bg-neutral-100 px-2 py-1 text-[11px] font-medium text-neutral-800">{a}</span>
+                            ))}
+                          </div>
+                        )}
+                        {p.declared && (
+                          <div className="mt-2 flex flex-wrap items-center gap-2">
+                            <span className="inline-flex items-center rounded-md border border-black/10 bg-white px-2 py-1 text-[11px] font-semibold text-neutral-700">Declaration</span>
+                            <span className="text-[11px] text-neutral-700">Confirmed by candidate</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  ))}
-                </div>
+                  ))
+                  }</div>
               )}
             </div>
           </div>
